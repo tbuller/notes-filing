@@ -1,35 +1,25 @@
 import React, { useState } from "react";
 
-const LogInForm = ({ navigate }) => {
+const SignUpForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    let response = await fetch("/tokens", {
+    fetch("/users", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ email: email, password: password }),
+    }).then((response) => {
+      if (response.status === 201) {
+        navigate("/login");
+      } else {
+        navigate("/signup");
+      }
     });
-
-    if (response.status !== 201) {
-      console.log(response);
-      navigate("/login");
-    } else {
-      console.log("oop");
-      let data = await response.json();
-      window.localStorage.setItem("token", data.token);
-      // Nasty solution fix later
-      setTimeout(() => {
-        window.location.reload(false);
-      }, 500);
-      console.log("page to reload");
-
-      navigate("/posts");
-    }
   };
 
   const handleEmailChange = (event) => {
@@ -43,7 +33,7 @@ const LogInForm = ({ navigate }) => {
   return (
     <div className="Auth-form-container">
       <div className="Auth-form-content">
-        <h3 className="Auth-form-title">Log In</h3>
+        <h3 className="Auth-form-title">Sign up</h3>
         <div className="form-group mt-3">
           <form onSubmit={handleSubmit} className="Auth-form">
             <div className="form-group mt-2">
@@ -69,12 +59,7 @@ const LogInForm = ({ navigate }) => {
               />
             </div>
             <div className="d-grid gap-2 mt-3">
-              <input
-                role="submit-button"
-                id="submit"
-                type="submit"
-                value="Submit"
-              />
+              <input id="submit" type="submit" value="Submit" />
             </div>
           </form>
         </div>
@@ -83,4 +68,4 @@ const LogInForm = ({ navigate }) => {
   );
 };
 
-export default LogInForm;
+export default SignUpForm;
