@@ -28,7 +28,7 @@ const LogInForm = ({ navigate }) => {
       }, 500);
       console.log("page to reload");
 
-      navigate("/posts");
+      navigate("/myhome");
     }
   };
 
