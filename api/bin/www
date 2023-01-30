@@ -1,9 +1,9 @@
 var app = require("../app");
-var debug = rquire("debug")("filing:server");
+var debug = require("debug")("filing:server");
 var http = require("http");
 var mongoose = require("mongoose");
 
-var port = normalizePort(process.env.PORT || "3000");
+var port = normalizePort(process.env.PORT || "8080");
 app.set("port", port);
 
 var mongoDbUrl = process.env.MONGODB_URL || "mongodb://0.0.0.0/filing";

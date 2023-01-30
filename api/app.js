@@ -5,3 +5,51 @@ const logger = require("morgan");
 const JWT = require("jsonwebtoken");
 const fileUpload = require("express-fileupload");
 const TokenGenerator = require("./models/token_generator");
+
+const tokensRouter = require("./routes/tokens")
+const usersRouter = require("./routes/users")
+
+const app = express();
+app.use(fileUpload());
+
+// setup for receiving JSON
+app.use(express.json());
+
+app.use(logger("dev"));
+app.use(express.json());
+app.use(express.static(path.join(__dirname, "public")));
+
+// middleware function to check for valid tokens
+const tokenChecker = (req, res, next) => {
+  let token;
+  const authHeader = req.get("Authorization");
+
+  if (authHeader) {
+    token = authHeader.slice(7);
+  }
+
+  JWT.verify(token, process.env.JWT_SECRET, (err, payload) => {
+    if (err) {
+      console.log(err);
+      res.status(401).json({ message: "auth error" });
+    } else {
+      req.user_id = payload.user_id;
+      next();
+    }
+  });
+};
+
+const logRequest = (req, res, next) => {
+  console.log(`Received ${req.method} from ${req.url}`)
+  next()
+}
+
+app.get('/', (req, res) => {
+  res.send('It works')
+  console.log(res)
+})
+
+app.use('/tokens', tokensRouter)
+app.use('/users', usersRouter)
+
+module.exports = app;
