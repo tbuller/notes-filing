@@ -47,16 +47,6 @@ app.get("/", (req, res) => {
 
 app.use("/tokens", tokensRouter);
 app.use("/users", usersRouter);
-// app.use("/newfolder", filesRouter);
-
-app.use((req, res, next) => {
-  next(createError(404));
-});
-
-app.use((err, req, res) => {
-  res.locals.message = err.message;
-  res.locals.error = req.app.get("env") === "development" ? err : {};
-  res.status(err.status || 500).json({ message: "server error" });
-});
+app.use("/newfile", filesRouter);
 
 module.exports = app;

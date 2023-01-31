@@ -14,7 +14,7 @@ function App() {
       <Route path="/login" element={<LoginForm navigate={useNavigate()} />} />
       <Route path="/signup" element={<SignUpForm navigate={useNavigate()} />} />
       <Route path="/myhome" element={<MyHomeForm navigate={useNavigate()} />} />
-      <Route path="/newfolder" element={<NewFolderForm navigate={useNavigate()} />} />
+      <Route path="/newfile" element={<NewFolderForm navigate={useNavigate()} />} />
     </Routes>
   );
 }

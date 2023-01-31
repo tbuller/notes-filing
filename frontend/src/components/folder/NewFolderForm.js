@@ -17,8 +17,20 @@ const NewFolderForm = ({ navigate }) => {
   }
 
   const handleSubmit = () => {
-    
-    navigate("/myhome")
+    fetch("newfile", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name: fileName, color: color }),
+    }).then((response) => {
+      if (response.status === 201) {
+        navigate("/myhome");
+      } else {
+        console.log(response)
+        navigate("/newfile");
+      }
+    });
   }
 
   console.log(fileName)
