@@ -1,10 +1,12 @@
 import { React, useState } from 'react'
+import { SketchPicker } from 'react-color'
+
+
 
 const NewFolderForm = ({ navigate }) => {
 
   const [fileName, setFileName] = useState("")
-  const [color, setColor] = useState("")
-  const [font, setFont] = useState("")
+  const [color, setColor] = useState("#FFFFFF")
 
   const handleFileName = (event) => {
     setFileName(event.target.value)
@@ -15,8 +17,8 @@ const NewFolderForm = ({ navigate }) => {
   }
 
   const handleSubmit = () => {
-    console.log(fileName)
-    // navigate("/myhome")
+    
+    navigate("/myhome")
   }
 
   console.log(fileName)
@@ -34,9 +36,9 @@ const NewFolderForm = ({ navigate }) => {
       </div> 
       <div>
       <label>New file color:</label>  
-      <input type="color" value="#330000" className="file-color" onChange={handleColor} list />
+      <input type="color" id="folder-color" value={color} list="true" onChange={handleColor} />
       </div> 
-      <input type="submit" onSubmit={handleSubmit} />      
+      <input type="submit" onClick={handleSubmit} />      
       </form>
     </div>
     </>
