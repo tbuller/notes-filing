@@ -1,9 +1,10 @@
 const User = require("../models/user");
-const TokenGenerator = require("../models/token_generator");
 
 const UsersController = {
-  Create: (req, res) => {
+  Create: (req, res, next) => {
+    console.log(req)
     const user = new User(req.body);
+    console.log(req)
     user.save((err) => {
       if (err) {
         res.status(400).json({ message: "Bad request" });

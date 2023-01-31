@@ -6,8 +6,9 @@ const JWT = require("jsonwebtoken");
 const fileUpload = require("express-fileupload");
 const TokenGenerator = require("./models/token_generator");
 
-const tokensRouter = require("./routes/tokens")
-const usersRouter = require("./routes/users")
+const tokensRouter = require("./routes/tokens");
+const usersRouter = require("./routes/users");
+const filesRouter = require("./routes/files");
 
 const app = express();
 app.use(fileUpload());
@@ -39,17 +40,23 @@ const tokenChecker = (req, res, next) => {
   });
 };
 
-const logRequest = (req, res, next) => {
-  console.log(`Received ${req.method} from ${req.url}`)
-  next()
-}
+app.get("/", (req, res) => {
+  res.send("It works");
+  console.log(res);
+});
 
-app.get('/', (req, res) => {
-  res.send('It works')
-  console.log(res)
-})
+app.use("/tokens", tokensRouter);
+app.use("/users", usersRouter);
+// app.use("/newfolder", filesRouter);
 
-app.use('/tokens', tokensRouter)
-app.use('/users', usersRouter)
+app.use((req, res, next) => {
+  next(createError(404));
+});
+
+app.use((err, req, res) => {
+  res.locals.message = err.message;
+  res.locals.error = req.app.get("env") === "development" ? err : {};
+  res.status(err.status || 500).json({ message: "server error" });
+});
 
 module.exports = app;
