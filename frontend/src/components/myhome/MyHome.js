@@ -1,3 +1,4 @@
+import File from '../folder/File'
 import { React, useState, useEffect } from 'react'
 import { json } from 'react-router'
 
@@ -6,7 +7,7 @@ const MyHome = ({ navigate }) => {
   const[files, setFiles] = useState([])
   const[token, setToken] = useState(window.localStorage.getItem("token"))
 
-  console.log(token)
+  console.log(files)
 
   useEffect(() => {
     if (token) {
@@ -32,6 +33,12 @@ const MyHome = ({ navigate }) => {
   <>
   <div>welcome to your home page</div><div>
     <button onClick={handleClick}>create folder</button>
+  <div>Here are the files</div>  
+  <div>
+    {files.map((f) => f.name)} 
+    <br/>
+    {files.map((f) => f.color)}
+  </div>
   </div>
   </>
   )

@@ -12,7 +12,13 @@ const FilesController = {
     })
   },
   List: (req, res, next) => {
-    const files = 
+    File.find(async (err, files) => {
+      if (err) {
+        throw err;
+      }
+      // const token = await TokenGenerator.jsonwebtoken(req.user_id);
+      res.status(200).json({ files: files });
+    })
   }
 }
 
