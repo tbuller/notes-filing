@@ -47,6 +47,6 @@ app.get("/", (req, res) => {
 
 app.use("/tokens", tokensRouter);
 app.use("/users", usersRouter);
-app.use("/newfile", filesRouter);
+app.use("/files", filesRouter);
 
 module.exports = app;
