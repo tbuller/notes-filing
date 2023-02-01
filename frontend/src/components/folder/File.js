@@ -1,14 +1,16 @@
-// import { React, useEffect, useState } from 'react'
+import { React, useEffect, useState } from 'react'
 
-// const File = ({ file }) => {
+const File = ({ file }) => {
 
-//   const [token, setToken] = useState(window.localStorage.getItem("token"))
+  const [token, setToken] = useState(window.localStorage.getItem("token"))
 
-//   useEffect(() => {
-//     fetch("/files", {
+  useEffect(() => {
+    fetch("/files", {
 
-//     })
-//   })
+    })
+  })
 
-// }
+}
+
+export default File;
 

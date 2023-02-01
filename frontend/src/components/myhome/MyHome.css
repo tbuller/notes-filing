@@ -23,10 +23,16 @@ html * {
   height: 80px;
   width: 400px;
   border-radius: 15px;
+  font-size: 20px;
+  text-align: left;
+  padding-left: 20px;
+  padding-bottom: 30px;
+  font-family: serif;
 }
 
 .file-button:hover {
   cursor: pointer;
+  background-color: white !important;
 }
 
 .file-container {
