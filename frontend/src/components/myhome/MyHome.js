@@ -33,8 +33,9 @@ const MyHome = ({ navigate }) => {
 
   const handleFileClick = (event) => {
     console.log(event.target.value)
-    setSelectedFile(event.target.value)
+    setSelectedFile(JSON.stringify(event.target.value))
     setSelected(true)
+    console.log(selectedFile)
   }
 
   return (
@@ -60,9 +61,17 @@ const MyHome = ({ navigate }) => {
            <button style={{backgroundColor: f.color}} className="file-button" value={f.name} onClick={handleFileClick}>{f.name}</button>
           </div>
         )
-      ) : null
+      ) : (
+        <div>
+          {
+            files.find(f => `${f.name}` === selectedFile)
+              ? <div>{selectedFile}</div>
+              : <div>not found</div>
+          }
+        </div>
+      )
     }
-</div>
+  </div>
   </div>
   </div>
   </>
