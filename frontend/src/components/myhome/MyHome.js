@@ -9,6 +9,7 @@ const MyHome = ({ navigate }) => {
   const[token, setToken] = useState(window.localStorage.getItem("token"))
   const[selectedFile, setSelectedFile] = useState("")
   const[selected, setSelected] = useState(false)
+  const[filteredFile, setFilteredFile] = useState([])
 
 
   useEffect(() => {
@@ -25,7 +26,7 @@ const MyHome = ({ navigate }) => {
           setFiles(data.files);
         });
     }
-  }, []);
+  }, [token]);
 
   const handleNewFile = () => {
     navigate("/newfile")
@@ -33,9 +34,12 @@ const MyHome = ({ navigate }) => {
 
   const handleFileClick = (event) => {
     console.log(event.target.value)
-    setSelectedFile(JSON.stringify(event.target.value))
-    setSelected(true)
+    setSelectedFile(event.target.value)
     console.log(selectedFile)
+    setSelected(true)    
+    console.log(selectedFile)
+    setFilteredFile(files.find(f => `${f.name}` === selectedFile))
+    console.log(filteredFile)
   }
 
   return (
@@ -54,24 +58,39 @@ const MyHome = ({ navigate }) => {
     </h3>
   </div>  
   <div>
-    {
-      !selected ? (
-        files.map((f) =>
-          <div key={f.name + f.color} className="file-container">
-           <button style={{backgroundColor: f.color}} className="file-button" value={f.name} onClick={handleFileClick}>{f.name}</button>
-          </div>
-        )
-      ) : (
-        <div>
-          {
-            files.find(f => `${f.name}` === selectedFile)
-              ? <div>{selectedFile}</div>
-              : <div>not found</div>
-          }
+  {
+    !selected ? (
+      files.map((f) => (
+        <div key={f.name + f.color} className="file-container">
+          <button
+            style={{ backgroundColor: f.color }}
+            className="file-button"
+            value={f.name}
+            onClick={handleFileClick}
+          >
+            {f.name}
+          </button>
         </div>
-      )
-    }
-  </div>
+      ))
+    ) : (
+      <div>
+        {
+           (
+            <button
+              style={{ backgroundColor: filteredFile.color }}
+              className="file-button"
+              value={selectedFile}
+              
+            >
+              {filteredFile.name}
+            </button>
+          
+          )
+        }
+      </div>
+    )
+  }
+</div>
   </div>
   </div>
   </>
