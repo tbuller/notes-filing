@@ -13,19 +13,22 @@ const NewFolderForm = ({ navigate }) => {
     setColor(event.target.value)
   }
 
-  const handleSubmit = () => {
-    fetch("newfile", {
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    fetch("/files", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ name: fileName, color: color }),
     }).then((response) => {
+      console.log(response.status)
       if (response.status === 201) {
+        console.log(response)
         navigate("/myhome");
       } else {
         console.log(response)
-        navigate("/newfile");
+        // navigate("/newfile");
       }
     });
   }

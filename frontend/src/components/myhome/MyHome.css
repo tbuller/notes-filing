@@ -1,0 +1,20 @@
+html * {
+  background-color: bisque;
+}
+
+.home-container {
+  padding-left: 20px;
+}
+
+.new-file-button {
+  height: 30px;
+  width: 200px;
+  font-size: 18px;
+  background-color: rgb(146, 146, 230);
+  border-radius: 15px;
+}
+
+.new-file-button:hover {
+  background-color: aquamarine;
+  cursor: pointer;
+}

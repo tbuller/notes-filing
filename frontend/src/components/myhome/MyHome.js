@@ -1,5 +1,6 @@
 import File from '../folder/File'
 import { React, useState, useEffect } from 'react'
+import './MyHome.css'
 import { json } from 'react-router'
 
 const MyHome = ({ navigate }) => {
@@ -26,18 +27,32 @@ const MyHome = ({ navigate }) => {
   }, []);
 
   const handleClick = () => {
-    navigate("/newfolder")
+    navigate("/newfile")
   }
 
   return (
   <>
-  <div>welcome to your home page</div><div>
-    <button onClick={handleClick}>create folder</button>
-  <div>Here are the files</div>  
+  <div className="home-container">
   <div>
-    {files.map((f) => f.name)} 
-    <br/>
-    {files.map((f) => f.color)}
+    <h1 className="welcome">
+    welcome to your home page
+    </h1>
+  </div>
+  <div className="new-file">
+    <button className="new-file-button" onClick={handleClick}>create new file</button>
+  <div>
+    <h3 className="prompt">
+    Please select a file
+    </h3>
+  </div>  
+  <div>
+    {files.map((f) =>
+    <>
+     <div>{f.name}</div>
+     <div>{f.color}</div>
+     </> 
+     )}
+  </div>
   </div>
   </div>
   </>
