@@ -18,3 +18,17 @@ html * {
   background-color: aquamarine;
   cursor: pointer;
 }
+
+.file-button {
+  height: 80px;
+  width: 400px;
+  border-radius: 15px;
+}
+
+.file-button:hover {
+  cursor: pointer;
+}
+
+.file-container {
+  padding-bottom: 10px;
+}

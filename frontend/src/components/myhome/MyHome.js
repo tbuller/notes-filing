@@ -8,8 +8,6 @@ const MyHome = ({ navigate }) => {
   const[files, setFiles] = useState([])
   const[token, setToken] = useState(window.localStorage.getItem("token"))
 
-  console.log(files)
-
   useEffect(() => {
     if (token) {
       fetch("/files", {
@@ -47,10 +45,9 @@ const MyHome = ({ navigate }) => {
   </div>  
   <div>
     {files.map((f) =>
-    <>
-     <div>{f.name}</div>
-     <div>{f.color}</div>
-     </> 
+    <div key={f.name + f.color} className="file-container">
+     <button style={{backgroundColor: f.color}} className="file-button">{f.name}</button>
+    </div>
      )}
   </div>
   </div>
