@@ -1,4 +1,4 @@
-import File from '../folder/File'
+import NoteForm from '../note/NoteForm'
 import { React, useState, useEffect } from 'react'
 import './MyHome.css'
 import { json } from 'react-router'
@@ -39,58 +39,72 @@ const MyHome = ({ navigate }) => {
   }
 
   return (
-  <>
-  <div className="home-container">
-  <div>
-    <h1 className="welcome">
-    welcome to your home page
-    </h1>
-  </div>
-    
-  </div>  
-  <div>
-  {
-    !selected ? (
-      <div className="new-file">
-        <button className="new-file-button" onClick={handleNewFile}>create new file</button>
-      </div>,
-      <h3 className="prompt">
-      Please select a file
-      </h3>,
-      files.map((f) => (
-        <div key={f.name + f.color} className="file-container">
-          <button
-            style={{ backgroundColor: f.color }}
-            className="file-button"
-            value={f.name}
-            onClick={handleFileClick}
-          >
-            {f.name}
-          </button>
-        </div>
-      ))
-    ) : (
-      <div>
-        {
-           (
+    <>
+    <div className="home-container">
+    <div>
+      <h1 className="welcome">
+      welcome to your home page
+      </h1>
+    </div>
+      
+    </div>  
+    <div>
+    {
+      !selected ? (
+        <div className="new-file">
+          <button className="new-file-button" onClick={handleNewFile}>create new file</button>
+        </div>,
+        <h3 className="prompt">
+        Please select a file
+        </h3>,
+        files.map((f) => (
+          <div key={f.name + f.color} className="file-container">
             <button
-              style={{ backgroundColor: filteredFile.color }}
-              className="selected-file-button"
-              value={filteredFile.name}
-              
+              style={{ backgroundColor: f.color }}
+              className="file-button"
+              value={f.name}
+              onClick={handleFileClick}
             >
-              {filteredFile.name}
+              {f.name}
             </button>
-          
-          )
-        }
-      </div>
+          </div>
+        ))
+      ) : (
+        <div>
+          {
+             (
+              <button
+                style={{ backgroundColor: filteredFile.color }}
+                className="selected-file-button"
+                value={filteredFile.name}
+                
+              >
+                {filteredFile.name}
+              </button>
+            
+            )
+            ( 
+              <form>
+                <div>
+                  <label>Title:</label>
+                  <input type="text" placeholder="Enter title"/>
+                </div>
+                <div>
+                  <label>Content:</label>
+                  <textarea placeholder="Enter content"></textarea>
+                </div>
+                <button type="submit">Add Note</button>
+              </form>
+               )
+          }
+        </div>
+      )
+    }
+  </div>
+  
+    </>
     )
-  }
-</div>
-
-  </>
-  )
+  
 }
 
 export default MyHome;

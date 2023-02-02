@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from 'react'
 
-const Note = ({ navigate }) => {
+const NoteForm = ({ navigate }) => {
   
   const[title, setTitle]= useState("")
   const[content, setContent] = useState("")
@@ -46,4 +46,4 @@ const Note = ({ navigate }) => {
   )
 }
 
-module.exports = Note
+export default NoteForm
