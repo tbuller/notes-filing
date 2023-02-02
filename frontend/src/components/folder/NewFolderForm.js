@@ -4,6 +4,7 @@ const NewFolderForm = ({ navigate }) => {
 
   const [fileName, setFileName] = useState("")
   const [color, setColor] = useState("#FFFFFF")
+  const [parent, setParent] = useState([])
 
   const handleFileName = (event) => {
     setFileName(event.target.value)
