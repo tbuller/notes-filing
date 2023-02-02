@@ -7,7 +7,7 @@ const MyHome = ({ navigate }) => {
 
   const[files, setFiles] = useState([])
   const[token, setToken] = useState(window.localStorage.getItem("token"))
-  const[selectedFile, setSelectedFile] = useState("")
+  const[selectedFile, setSelectedFile] = useState()
   const[selected, setSelected] = useState(false)
   const[filteredFile, setFilteredFile] = useState([])
 
@@ -34,11 +34,8 @@ const MyHome = ({ navigate }) => {
 
   const handleFileClick = (event) => {
     console.log(event.target.value)
-    setSelectedFile(event.target.value)
-    console.log(selectedFile)
     setSelected(true)    
-    console.log(selectedFile)
-    setFilteredFile(files.find(f => `${f.name}` === selectedFile))
+    setFilteredFile(files.find(f => `${f.name}` === event.target.value))
     console.log(filteredFile)
   }
 
