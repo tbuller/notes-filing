@@ -7,7 +7,6 @@ const MyHome = ({ navigate }) => {
 
   const[files, setFiles] = useState([])
   const[token, setToken] = useState(window.localStorage.getItem("token"))
-  const[selectedFile, setSelectedFile] = useState()
   const[selected, setSelected] = useState(false)
   const[filteredFile, setFilteredFile] = useState([])
 
@@ -47,16 +46,17 @@ const MyHome = ({ navigate }) => {
     welcome to your home page
     </h1>
   </div>
-  <div className="new-file">
-    <button className="new-file-button" onClick={handleNewFile}>create new file</button>
-  <div>
-    <h3 className="prompt">
-    Please select a file
-    </h3>
+    
   </div>  
   <div>
   {
     !selected ? (
+      <div className="new-file">
+        <button className="new-file-button" onClick={handleNewFile}>create new file</button>
+      </div>,
+      <h3 className="prompt">
+      Please select a file
+      </h3>,
       files.map((f) => (
         <div key={f.name + f.color} className="file-container">
           <button
@@ -75,8 +75,8 @@ const MyHome = ({ navigate }) => {
            (
             <button
               style={{ backgroundColor: filteredFile.color }}
-              className="file-button"
-              value={selectedFile}
+              className="selected-file-button"
+              value={filteredFile.name}
               
             >
               {filteredFile.name}
@@ -88,8 +88,7 @@ const MyHome = ({ navigate }) => {
     )
   }
 </div>
-  </div>
-  </div>
+
   </>
   )
 }

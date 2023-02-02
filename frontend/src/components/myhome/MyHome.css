@@ -3,7 +3,7 @@ html * {
 }
 
 .home-container {
-  padding-left: 20px;
+  padding-left: 50px;
 }
 
 .new-file-button {
@@ -21,9 +21,20 @@ html * {
 
 .file-button {
   height: 80px;
-  width: 400px;
+  width: 600px;
   border-radius: 15px;
   font-size: 20px;
+  text-align: left;
+  padding-left: 20px;
+  padding-bottom: 30px;
+  font-family: serif;
+}
+
+.selected-file-button {
+  height: 100px;
+  width: 1000px;
+  border-radius: 15px;
+  font-size: 30px;
   text-align: left;
   padding-left: 20px;
   padding-bottom: 30px;
@@ -33,6 +44,7 @@ html * {
 .file-button:hover {
   cursor: pointer;
   background-color: white !important;
+  transform: scale(1.15);
 }
 
 .file-container {
