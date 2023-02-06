@@ -83,19 +83,9 @@ const MyHome = ({ navigate }) => {
               </button>
             
             )
-            // ( 
-            //   <form>
-            //     <div>
-            //       <label>Title:</label>
-            //       <input type="text" placeholder="Enter title"/>
-            //     </div>
-            //     <div>
-            //       <label>Content:</label>
-            //       <textarea placeholder="Enter content"></textarea>
-            //     </div>
-            //     <button type="submit">Add Note</button>
-            //   </form>
-            //    )
+            // <
+            // <NoteForm />
+            
           }
         </div>
       )
