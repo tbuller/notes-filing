@@ -6,6 +6,7 @@ import { json } from 'react-router'
 const MyHome = ({ navigate }) => {
 
   const[files, setFiles] = useState([])
+  const[notes, setNotes] = useState([])
   const[token, setToken] = useState(window.localStorage.getItem("token"))
   const[selected, setSelected] = useState(false)
   const[filteredFile, setFilteredFile] = useState([])
@@ -35,7 +36,19 @@ const MyHome = ({ navigate }) => {
     console.log(event.target.value)
     setSelected(true)    
     setFilteredFile(files.find(f => `${f.name}` === event.target.value))
-    console.log(filteredFile)
+    if (token) {
+      fetch("/note", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+      })
+        .then((response) => response.json())
+        .then(async (data) => {
+          setNotes(data.notes);
+          window.localStorage.setItem("token", data.token);
+          setToken(window.localStorage.getItem("token"));
+        })
+    }
   }
 
   return (
@@ -83,6 +96,9 @@ const MyHome = ({ navigate }) => {
               >
                 {filteredFile.name}
               </button>
+              <div>
+                <p>{notes}</p>
+              </div>
               </div>
               <NoteForm filteredFile={filteredFile}/>   
               </div>         

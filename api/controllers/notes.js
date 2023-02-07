@@ -11,6 +11,15 @@ const NoteController = {
         res.status(201).json({ message: "OK" });
       }
     })
+  },
+  List: (req, res, next) => {
+    Note.find(async (err, notes) => {
+      if (err) {
+        throw err;
+      } else {
+        res.status(200).json({ notes: notes });
+      }
+    })
   }
 }
 
