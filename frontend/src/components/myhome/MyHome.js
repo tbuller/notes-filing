@@ -28,14 +28,7 @@ const MyHome = ({ navigate }) => {
     }
   }, [token]);
 
-  const handleNewFile = () => {
-    navigate("/newfile")
-  }
-
-  const handleFileClick = (event) => {
-    console.log(event.target.value)
-    setSelected(true)    
-    setFilteredFile(files.find(f => `${f.name}` === event.target.value))
+  useEffect(() => {
     if (token) {
       fetch("/note", {
         headers: {
@@ -44,11 +37,23 @@ const MyHome = ({ navigate }) => {
       })
         .then((response) => response.json())
         .then(async (data) => {
+          console.log(data.notes);
           setNotes(data.notes);
           window.localStorage.setItem("token", data.token);
           setToken(window.localStorage.getItem("token"));
+          console.log(notes);
         })
     }
+  }, [token])
+
+  const handleNewFile = () => {
+    navigate("/newfile")
+  }
+
+  const handleFileClick = async (event) => {
+    console.log(event.target.value)
+    setSelected(true)    
+    setFilteredFile(files.find(f => `${f.name}` === event.target.value))
   }
 
   return (
@@ -97,7 +102,7 @@ const MyHome = ({ navigate }) => {
                 {filteredFile.name}
               </button>
               <div>
-                <p>{notes}</p>
+                <p>{notes[0].title}</p>
               </div>
               </div>
               <NoteForm filteredFile={filteredFile}/>   
