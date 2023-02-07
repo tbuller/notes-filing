@@ -2,6 +2,7 @@ import NoteForm from '../note/NoteForm'
 import { React, useState, useEffect } from 'react'
 import './MyHome.css'
 import { json } from 'react-router'
+import NoteHeader from '../note/NoteHeader'
 
 const MyHome = ({ navigate }) => {
 
@@ -102,7 +103,14 @@ const MyHome = ({ navigate }) => {
                 {filteredFile.name}
               </button>
               <div>
-                <p>{notes[0].title}</p>
+                <div>
+                  {
+                  notes.map(n => n.file === filteredFile.name ?  
+                  <NoteHeader title={n.title} key={n._id} /> :
+                  <div></div>
+                  )
+                  }     
+                </div>
               </div>
               </div>
               <NoteForm filteredFile={filteredFile}/>   

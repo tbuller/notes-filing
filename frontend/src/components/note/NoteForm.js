@@ -57,4 +57,4 @@ const NoteForm = ({ navigate, filteredFile }) => {
   )
 }
 
-export default NoteForm
+export default NoteForm;
