@@ -32,13 +32,19 @@ const NoteForm = ({ navigate }) => {
 
   return (
     <div>
-    <div>New note</div>
+    <h1 className="title">New note</h1>
     <form className="note-form" onSubmit={handleSubmit}>
     <div>
+    <div>
+    <label>Pick a title for your note!</label>
+    </div>
     <input type="text" className="note-title" onChange={handleTitle}/>
     </div>
     <div>
-    <input type="text" className="note-content" onChange={handleContent}/>
+    <div>
+    <label>Type your content here</label>  
+    </div>
+    <textarea className="note-content" onChange={handleContent}/>
     </div>
     </form>
     </div>

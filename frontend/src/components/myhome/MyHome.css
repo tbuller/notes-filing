@@ -6,7 +6,7 @@ html * {
   padding-left: 20px;
 }
 
-.welcome {
+.title {
   align-items: center;
 }
 
@@ -70,12 +70,17 @@ html * {
 }
 
 .note-title {
-  height: 20px;
-  width: 200px;
+  height: 30px;
+  width: 300px;
+  background-color: white;
+  border-radius: 12px;
   margin-bottom: 10px;
 }
 
 .note-content {
-  height: 20px;
-  width: 200px;
+  height: 300px;
+  width: 800px;
+  background-color: white;
+  border-radius: 12px;
+  vertical-align: top;
 }

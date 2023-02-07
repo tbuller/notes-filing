@@ -42,7 +42,7 @@ const MyHome = ({ navigate }) => {
     <>
     <div className="home-container">
     <div>
-      <h1 className="welcome">
+      <h1 className="title">
       welcome to your home page
       </h1>
     </div>
