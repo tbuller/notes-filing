@@ -3,7 +3,7 @@ html * {
 }
 
 .home-container {
-  padding-left: 50px;
+  padding-left: 20px;
 }
 
 .new-file-button {
@@ -49,4 +49,9 @@ html * {
 
 .file-container {
   padding-bottom: 10px;
+  padding-left: 20px;
+}
+
+.selected-file-container {
+  padding-left: 20px;
 }

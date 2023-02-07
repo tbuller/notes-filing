@@ -73,6 +73,7 @@ const MyHome = ({ navigate }) => {
         <div>
           {
              (
+              <div className="selected-file-container">
               <button
                 style={{ backgroundColor: filteredFile.color }}
                 className="selected-file-button"
@@ -81,10 +82,10 @@ const MyHome = ({ navigate }) => {
               >
                 {filteredFile.name}
               </button>
-            
+              <NoteForm />   
+              </div>         
             )
-            // <
-            // <NoteForm />
+            
             
           }
         </div>
