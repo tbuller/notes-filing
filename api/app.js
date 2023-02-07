@@ -9,6 +9,7 @@ const TokenGenerator = require("./models/token_generator");
 const tokensRouter = require("./routes/tokens");
 const usersRouter = require("./routes/users");
 const filesRouter = require("./routes/files");
+const noteRouter = require("./routes/note");
 
 const app = express();
 app.use(fileUpload());
@@ -48,5 +49,6 @@ app.get("/", (req, res) => {
 app.use("/tokens", tokensRouter);
 app.use("/users", usersRouter);
 app.use("/files", filesRouter);
+app.use("/newnote", noteRouter)
 
 module.exports = app;
