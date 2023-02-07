@@ -84,3 +84,16 @@ html * {
   border-radius: 12px;
   vertical-align: top;
 }
+
+.submit-form {
+  height: 30px;
+  width: 70px;
+  border-radius: 12px;
+  background-color: white;
+}
+
+.submit-form:hover {
+  cursor: pointer;
+  background-color: rgb(63, 169, 40);
+  transform: scale(1.05);
+}

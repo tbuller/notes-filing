@@ -84,7 +84,7 @@ const MyHome = ({ navigate }) => {
                 {filteredFile.name}
               </button>
               </div>
-              <NoteForm />   
+              <NoteForm filteredFile={filteredFile}/>   
               </div>         
             )
             

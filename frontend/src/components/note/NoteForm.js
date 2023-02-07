@@ -1,17 +1,20 @@
 import { React, useState, useEffect } from 'react'
 
-const NoteForm = ({ navigate }) => {
+const NoteForm = ({ navigate, filteredFile }) => {
   
   const[title, setTitle]= useState("")
   const[content, setContent] = useState("")
 
   const handleSubmit = async (event) => {
+    event.preventDefault();
+    const requestBody = ({title: title, content: content, file: filteredFile.name});
+    console.log(requestBody);
     fetch("/note", {
       method: "post",
       headers: {
         "Content-type" : "application/json",
       },
-      body: JSON.stringify({ title: title, content: content })
+      body: requestBody
     })
     .then((response) => {
       if(response.status === 201) {
@@ -23,11 +26,11 @@ const NoteForm = ({ navigate }) => {
   }
 
   const handleTitle = (event) => {
-    setTitle(event.target.value)
+    setTitle(event.target.value);
   }
 
   const handleContent = (event) => {
-    setContent(event.target.value)
+    setContent(event.target.value);
   }
 
   return (
@@ -46,6 +49,7 @@ const NoteForm = ({ navigate }) => {
     </div>
     <textarea className="note-content" onChange={handleContent}/>
     </div>
+    <input type="submit" className="submit-form" />
     </form>
     </div>
     
