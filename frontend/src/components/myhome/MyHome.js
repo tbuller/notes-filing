@@ -3,6 +3,7 @@ import { React, useState, useEffect } from 'react'
 import './MyHome.css'
 import { json } from 'react-router'
 import NoteHeader from '../note/NoteHeader'
+import Note from '../note/Note'
 
 const MyHome = ({ navigate }) => {
 
@@ -106,7 +107,7 @@ const MyHome = ({ navigate }) => {
                 <div>
                   {
                   notes.map(n => n.file === filteredFile.name ?  
-                  <NoteHeader title={n.title} key={n._id} /> :
+                  <NoteHeader title={n.title} key={n._id} value={n._id} /> :
                   <div></div>
                   )
                   }     
