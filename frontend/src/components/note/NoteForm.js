@@ -14,13 +14,14 @@ const NoteForm = ({ navigate, filteredFile }) => {
       headers: {
         "Content-type" : "application/json",
       },
-      body: requestBody
+      body: JSON.stringify(requestBody),
     })
     .then((response) => {
       if(response.status === 201) {
-        console.log("note successfully added to the database")
+        console.log("note successfully added to the database");
       } else {
-        console.log("error, note couldn't be passed onto the database")
+        console.log("error, note couldn't be passed onto the database");
+        console.log(response.status);
       }
     })
   }
