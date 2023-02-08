@@ -107,7 +107,7 @@ const MyHome = ({ navigate }) => {
                 <div>
                   {
                   notes.map(n => n.file === filteredFile.name ?  
-                  <NoteHeader title={n.title} key={n._id} value={n._id} /> :
+                  <NoteHeader title={n.title} key={n._id} content={n.content} value={n._id} /> :
                   <div></div>
                   )
                   }     

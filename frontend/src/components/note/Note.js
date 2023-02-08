@@ -1,13 +1,14 @@
 import { React } from 'react'
 
-const Note = ({ title, content, file }) => {
+const Note = ({ content }) => {
 
   return (
   <div>
-  <h1>{title} in folder: {file}</h1>
   <div>
     <p>{content}</p>
   </div>
   </div>  
   )
 }
+
+export default Note;
