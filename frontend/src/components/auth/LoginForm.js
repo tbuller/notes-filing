@@ -3,6 +3,7 @@ import React, { useState } from "react";
 const LogInForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const[token, setToken] = useState(window.localStorage.getItem("token"))
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -23,7 +24,6 @@ const LogInForm = ({ navigate }) => {
       const data = await response.json();
       window.localStorage.setItem("userId", data._id);
       window.localStorage.setItem("token", data.token);
-      // Nasty solution fix later
       setTimeout(() => {
         window.location.reload(false);
       }, 1000);
@@ -32,8 +32,17 @@ const LogInForm = ({ navigate }) => {
       navigate("/myhome");
     }
 
-    fetch("/users")
-  };
+    fetch("/users", {
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+    })
+      .then((response) => response.json())
+      .then(async (data) => {
+        console.log(data);
+        // window.localStorage.setItem(data._id);
+      })
+    }
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
