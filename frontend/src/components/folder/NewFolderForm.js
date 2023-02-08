@@ -21,7 +21,7 @@ const NewFolderForm = ({ navigate }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name: fileName, color: color }),
+      body: JSON.stringify({ name: fileName, color: color, userId: window.localStorage.getItem("userId") }),
     }).then((response) => {
       console.log(response.status)
       if (response.status === 201) {

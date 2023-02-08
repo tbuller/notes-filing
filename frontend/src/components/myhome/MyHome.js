@@ -78,7 +78,9 @@ const MyHome = ({ navigate }) => {
         <h3 className="prompt">
         Please select a file
         </h3>,
-        files.map((f) => (
+        files.map((f) => {
+          if (f.userId === window.localStorage.getItem("userId")) {
+          return (
           <div key={f.name + f.color} className="file-container">
             <button
               style={{ backgroundColor: f.color }}
@@ -88,8 +90,8 @@ const MyHome = ({ navigate }) => {
             >
               {f.name}
             </button>
-          </div>
-        ))
+          </div> )}
+})
       ) : (
         <div>
           {
