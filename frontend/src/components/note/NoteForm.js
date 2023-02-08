@@ -24,6 +24,7 @@ const NoteForm = ({ navigate, filteredFile }) => {
         console.log(response.status);
       }
     })
+    window.location.reload(true);
   }
 
   const handleTitle = (event) => {

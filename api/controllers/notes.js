@@ -20,6 +20,15 @@ const NoteController = {
         res.status(200).json({ notes: notes });
       }
     })
+  },
+  Delete: (req, res, next) => {
+    Note.deleteOne(req._id, async(err, noteInfo) => {
+      if (err) {
+        throw err;
+      } else {
+        res.status(202).json({ noteInfo : noteInfo });
+      }
+    })
   }
 }
 
