@@ -20,16 +20,19 @@ const LogInForm = ({ navigate }) => {
       navigate("/login");
     } else {
       console.log("oop");
-      let data = await response.json();
+      const data = await response.json();
+      window.localStorage.setItem("userId", data._id);
       window.localStorage.setItem("token", data.token);
       // Nasty solution fix later
       setTimeout(() => {
         window.location.reload(false);
-      }, 500);
+      }, 1000);
       console.log("page to reload");
 
       navigate("/myhome");
     }
+
+    fetch("/users")
   };
 
   const handleEmailChange = (event) => {

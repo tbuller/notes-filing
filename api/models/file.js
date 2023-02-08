@@ -3,8 +3,7 @@ const mongoose = require('mongoose')
 const FileSchema = new mongoose.Schema({
   name: { type: String, required: true },
   color: { type: String, required: true },
-  parents: { type: Array, required: false },
-  children: { type: Array, required: false }
+  userId: { type: String, required: true }
 })
 
 const File = mongoose.model("File", FileSchema)

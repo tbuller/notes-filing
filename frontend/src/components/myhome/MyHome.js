@@ -24,6 +24,7 @@ const MyHome = ({ navigate }) => {
         .then((response) => response.json())
         .then(async (data) => {
           window.localStorage.setItem("token", data.token);
+          console.log(window.localStorage);
           setToken(window.localStorage.getItem("token"));
           setFiles(data.files);
         });
