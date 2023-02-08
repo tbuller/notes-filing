@@ -26,7 +26,7 @@ const LogInForm = ({ navigate }) => {
       window.localStorage.setItem("token", data.token);
       setTimeout(() => {
         window.location.reload(false);
-      }, 10000);
+      }, 50);
       console.log("page to reload");
 
       navigate("/myhome");

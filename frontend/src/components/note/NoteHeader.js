@@ -2,7 +2,7 @@ import Note from './Note';
 import { React, useState } from 'react';
 import { RxCross1 } from 'react-icons/rx';
 
-const NoteHeader = ({title, _id, content}) => {
+const NoteHeader = ({title, _id, content, setNotes, notes}) => {
 
   const[showNote, setShowNote] = useState(false);
 
@@ -11,7 +11,7 @@ const NoteHeader = ({title, _id, content}) => {
     setShowNote(!showNote);
   }
 
-  const handleDelete = () => {
+  const handleDelete = (event) => {
     fetch("/note", {
       method: "delete",
       headers: {
@@ -22,8 +22,9 @@ const NoteHeader = ({title, _id, content}) => {
       .then((response) => {
         if (response.status === 202) {
           console.log("Note successfully deleted from the database");
+          setNotes(notes.filter(note => note._id !== _id));
         } else {
-          console.log("error, couldn't delete the note from the databse");
+          console.log("error, couldn't delete the note from the database");
         }
       })
       window.location.reload(true);
