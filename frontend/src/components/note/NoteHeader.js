@@ -1,5 +1,6 @@
 import Note from './Note';
 import { React, useState } from 'react';
+import { RxCross1 } from 'react-icons/rx';
 
 const NoteHeader = ({title, _id, content}) => {
 
@@ -25,12 +26,15 @@ const NoteHeader = ({title, _id, content}) => {
           console.log("error, couldn't delete the note from the databse");
         }
       })
+      window.location.reload(true);
   }
   
   return (
     <div className="note-button-container">
       <button className="note-header-button" onClick={handleNote} key={_id}>{title}</button>
-      <button onClick={handleDelete}>Delete</button>
+      <span className="delete-note-button-container">
+      <button onClick={handleDelete} className="delete-note-button"><RxCross1 background-color="white" /></button>
+      </span>
       {showNote && <Note content={content} />}
     </div>
   )

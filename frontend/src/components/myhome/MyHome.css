@@ -1,4 +1,4 @@
-html * {
+html {
   background-color: bisque;
 }
 
@@ -119,4 +119,26 @@ html * {
 .note-button-container {
   padding-top: 20px;
   padding-bottom: 10px;
+}
+
+.delete-note-button-container {
+  padding-left: 20px;
+  vertical-align: middle;
+}
+
+.delete-note-button {
+  margin-top: 26px;
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  padding-top: 6px;
+  color: red;
+  border-color: red;
+  font-size: 25px;
+}
+
+.delete-note-button:hover {
+  cursor: pointer;
+  background-color: red;
+  color: white;
 }
