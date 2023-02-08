@@ -22,11 +22,11 @@ const LogInForm = ({ navigate }) => {
     } else {
       console.log("oop");
       const data = await response.json();
-      window.localStorage.setItem("userId", data._id);
+      // window.localStorage.setItem("userId", data._id);
       window.localStorage.setItem("token", data.token);
       setTimeout(() => {
         window.location.reload(false);
-      }, 1000);
+      }, 10000);
       console.log("page to reload");
 
       navigate("/myhome");
@@ -41,6 +41,8 @@ const LogInForm = ({ navigate }) => {
       .then(async (data) => {
         console.log(data);
         // window.localStorage.setItem(data._id);
+        data.users.map(u => u.email === email && u.password === password ? window.localStorage.setItem("userId", u._id) : null)
+        console.log(window.localStorage);
       })
     }
 
