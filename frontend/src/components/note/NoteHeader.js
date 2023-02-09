@@ -26,7 +26,7 @@ const NoteHeader = ({ title, _id, content, notes, setNotes, showButton, setShowB
           console.log("error, couldn't delete the note from the database");
         }
       })
-      setShowButton(false);
+      setShowButton(false)
   }
   
   return (
