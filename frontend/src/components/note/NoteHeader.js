@@ -2,12 +2,11 @@ import Note from './Note';
 import { React, useState } from 'react';
 import { RxCross1 } from 'react-icons/rx';
 
-const NoteHeader = ({ title, _id, content, notes, setNotes }) => {
+const NoteHeader = ({ title, _id, content, notes, setNotes, showButton, setShowButton }) => {
 
   const[showNote, setShowNote] = useState(false);
 
-  const handleNote = (event) => {
-    console.log(event.target.value);
+  const handleNote = () => {
     setShowNote(!showNote);
   }
 
@@ -27,7 +26,7 @@ const NoteHeader = ({ title, _id, content, notes, setNotes }) => {
           console.log("error, couldn't delete the note from the database");
         }
       })
-      // window.location.reload(false);
+      setShowButton(false);
   }
   
   return (

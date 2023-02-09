@@ -12,6 +12,8 @@ const MyHome = ({ navigate }) => {
   const[token, setToken] = useState(window.localStorage.getItem("token"));
   const[selected, setSelected] = useState(false);
   const[filteredFile, setFilteredFile] = useState([]);
+  const[firstNotesRender, setFirstNotesRender] = useState(true);
+  const[showButton, setShowButton] = useState(true);
 
 
   useEffect(() => {
@@ -41,9 +43,10 @@ const MyHome = ({ navigate }) => {
         .then((response) => response.json())
         .then(async (data) => {
           console.log(data.notes);
-          setNotes(data.notes);
+          firstNotesRender && setNotes(data.notes);
           window.localStorage.setItem("token", data.token);
-          setToken(window.localStorage.getItem("token"));
+          firstNotesRender && setToken(window.localStorage.getItem("token"));
+          setFirstNotesRender(false);
           console.log(notes);
         })
     }
@@ -110,7 +113,7 @@ const MyHome = ({ navigate }) => {
                 <div>
                   {
                   notes.map(n => n.file === filteredFile.name ?  
-                  <NoteHeader title={n.title} key={n._id} content={n.content} value={n._id} notes={notes} setNotes={setNotes} /> :
+                  showButton && <NoteHeader title={n.title} key={n._id} content={n.content} value={n._id} notes={notes} setNotes={setNotes} showButton={showButton} setShowButton={setShowButton} /> :
                   <div></div>
                   )
                   }     
