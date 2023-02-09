@@ -1,18 +1,17 @@
 import NoteForm from '../note/NoteForm'
 import { React, useState, useEffect } from 'react'
 import './MyHome.css'
-import { json } from 'react-router'
 import NoteHeader from '../note/NoteHeader'
-import Note from '../note/Note'
+import { useNotesContext } from '../hooks/useNotesContext';
 
 const MyHome = ({ navigate }) => {
 
+  const {workouts, dispatch} = useNotesContext()
   const[files, setFiles] = useState([]);
-  const[notes, setNotes] = useState([]);
+  // const[notes, setNotes] = useState([]);
   const[token, setToken] = useState(window.localStorage.getItem("token"));
   const[selected, setSelected] = useState(false);
   const[filteredFile, setFilteredFile] = useState([]);
-  const[firstNotesRender, setFirstNotesRender] = useState(true);
   const[showButton, setShowButton] = useState(true);
 
 

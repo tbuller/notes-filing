@@ -23,7 +23,7 @@ export const NotesContextProvider = ({ children }) => {
   })
 
   return (
-    <NotesContextProvider value={{state, dispatch}}>
+    <NotesContextProvider value={{...state, dispatch}}>
       { children }
     </NotesContextProvider>
   )
