@@ -7,11 +7,11 @@ import Note from '../note/Note'
 
 const MyHome = ({ navigate }) => {
 
-  const[files, setFiles] = useState([])
-  const[notes, setNotes] = useState([])
-  const[token, setToken] = useState(window.localStorage.getItem("token"))
-  const[selected, setSelected] = useState(false)
-  const[filteredFile, setFilteredFile] = useState([])
+  const[files, setFiles] = useState([]);
+  const[notes, setNotes] = useState([]);
+  const[token, setToken] = useState(window.localStorage.getItem("token"));
+  const[selected, setSelected] = useState(false);
+  const[filteredFile, setFilteredFile] = useState([]);
 
 
   useEffect(() => {
@@ -47,10 +47,10 @@ const MyHome = ({ navigate }) => {
           console.log(notes);
         })
     }
-  }, [token])
+  }, [token, notes])
 
   const handleNewFile = () => {
-    navigate("/newfile")
+    // navigate("/newfile")
   }
 
   const handleFileClick = async (event) => {
