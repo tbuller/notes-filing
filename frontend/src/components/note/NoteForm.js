@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from 'react'
 
-const NoteForm = ({ navigate, filteredFile }) => {
+const NoteForm = ({ navigate, filteredFile, setNotes, notes }) => {
   
   const[title, setTitle]= useState("")
   const[content, setContent] = useState("")
@@ -24,7 +24,9 @@ const NoteForm = ({ navigate, filteredFile }) => {
         console.log(response.status);
       }
     })
-    window.location.reload(true);
+    // window.location.reload(true);
+    setNotes([...notes, requestBody]);
+    console.log(notes);
   }
 
   const handleTitle = (event) => {

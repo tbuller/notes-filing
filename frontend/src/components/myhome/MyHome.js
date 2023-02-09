@@ -41,16 +41,14 @@ const MyHome = ({ navigate }) => {
         },
       })
         .then((response) => response.json())
-        .then(async (data) => {
-          console.log(data.notes);
-          firstNotesRender && setNotes(data.notes);
+        .then(async (data) => {          
+          setNotes(data.notes);
           window.localStorage.setItem("token", data.token);
-          firstNotesRender && setToken(window.localStorage.getItem("token"));
-          setFirstNotesRender(false);
+          setToken(window.localStorage.getItem("token"));          
           console.log(notes);
         })
     }
-  }, [token, notes])
+  }, [token])
 
   const handleNewFile = () => {
     // navigate("/newfile")
@@ -112,7 +110,7 @@ const MyHome = ({ navigate }) => {
               <div>
                 <div>
                   {
-                  notes.map(n => n.file === filteredFile.name ?  
+                  notes.map((n, index) => n.file === filteredFile.name ?  
                   showButton && <NoteHeader title={n.title} key={n._id} content={n.content} value={n._id} notes={notes} setNotes={setNotes} showButton={showButton} setShowButton={setShowButton} /> :
                   <div></div>
                   )
@@ -120,7 +118,7 @@ const MyHome = ({ navigate }) => {
                 </div>
               </div>
               </div>
-              <NoteForm filteredFile={filteredFile}/>   
+              <NoteForm filteredFile={filteredFile} setNotes={setNotes} notes={notes} />   
               </div>         
             )
             
