@@ -13,6 +13,7 @@ const MyHome = ({ navigate }) => {
   const[selected, setSelected] = useState(false);
   const[filteredFile, setFilteredFile] = useState([]);
   const[showButton, setShowButton] = useState([]);
+  const[counter, setCounter] = useState(0);
 
 
   useEffect(() => {
@@ -32,7 +33,7 @@ const MyHome = ({ navigate }) => {
     }
   }, [token]);
 
-  useEffect(() => {
+  useEffect((event) => {
     if (token) {
       fetch("/note", {
         headers: {
@@ -40,14 +41,14 @@ const MyHome = ({ navigate }) => {
         },
       })
         .then((response) => response.json())
-        .then(async (data) => {          
+        .then(async (data) => {    
           setNotes(data.notes);
           window.localStorage.setItem("token", data.token);
-          setToken(window.localStorage.getItem("token"));          
-          console.log(notes);
+          setToken(window.localStorage.getItem("token")); 
+          console.log(counter);                   
         })
     }
-  }, [token])
+  }, [token], [counter])
 
   const handleNewFile = () => {
     // navigate("/newfile")
@@ -117,7 +118,7 @@ const MyHome = ({ navigate }) => {
                 </div>
               </div>
               </div>
-              <NoteForm filteredFile={filteredFile} setNotes={setNotes} notes={notes} />   
+              <NoteForm filteredFile={filteredFile} setNotes={setNotes} notes={notes} counter={counter} setCounter={setCounter} />   
               </div>         
             )
             

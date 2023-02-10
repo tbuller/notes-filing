@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from 'react'
 
-const NoteForm = ({ navigate, filteredFile, setNotes, notes }) => {
+const NoteForm = ({ navigate, filteredFile, setNotes, notes, counter, setCounter }) => {
   
   const[title, setTitle]= useState("")
   const[content, setContent] = useState("")
@@ -26,6 +26,7 @@ const NoteForm = ({ navigate, filteredFile, setNotes, notes }) => {
     })
     // window.location.reload(true);
     setNotes([...notes, requestBody]);
+    setCounter(counter + 1);
     console.log(notes);
   }
 

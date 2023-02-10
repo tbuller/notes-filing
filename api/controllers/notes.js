@@ -1,4 +1,3 @@
-const { response } = require('../app');
 const Note = require('../models/note');
 
 const NoteController = {
