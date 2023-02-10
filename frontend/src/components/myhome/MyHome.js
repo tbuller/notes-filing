@@ -12,7 +12,7 @@ const MyHome = ({ navigate }) => {
   const[token, setToken] = useState(window.localStorage.getItem("token"));
   const[selected, setSelected] = useState(false);
   const[filteredFile, setFilteredFile] = useState([]);
-  const[showButton, setShowButton] = useState(true);
+  const[showButton, setShowButton] = useState([]);
 
 
   useEffect(() => {
@@ -109,8 +109,8 @@ const MyHome = ({ navigate }) => {
               <div>
                 <div>
                   {
-                  notes.map((n, index) => n.file === filteredFile.name ?  
-                  showButton && <NoteHeader title={n.title} key={n._id} content={n.content} value={n._id} notes={notes} setNotes={setNotes} showButton={showButton} setShowButton={setShowButton} /> :
+                  notes.map((n) => n.file === filteredFile.name ?  
+                  <NoteHeader title={n.title} key={n._id} content={n.content} value={n._id} notes={notes} setNotes={setNotes} showButton={n.showButton} setShowButton={setShowButton} /> :
                   <div></div>
                   )
                   }     
