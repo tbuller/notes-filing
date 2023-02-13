@@ -48,7 +48,7 @@ const MyHome = ({ navigate }) => {
           console.log(counter);                   
         })
     }
-  }, [token], [counter])
+  }, [counter, token])
 
   const handleNewFile = () => {
     // navigate("/newfile")
@@ -111,7 +111,7 @@ const MyHome = ({ navigate }) => {
                 <div>
                   {
                   notes.map((n) => n.file === filteredFile.name ?  
-                  <NoteHeader title={n.title} key={n._id} content={n.content} value={n._id} notes={notes} setNotes={setNotes} showButton={n.showButton} setShowButton={setShowButton} /> :
+                  <NoteHeader title={n.title} key={n._id} content={n.content} value={n._id} notes={notes} setNotes={setNotes} showButton={n.showButton} setShowButton={setShowButton} _id={n._id} /> :
                   <div></div>
                   )
                   }     

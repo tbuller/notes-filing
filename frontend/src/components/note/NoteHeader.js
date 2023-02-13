@@ -23,7 +23,7 @@ const NoteHeader = ({ title, _id, content, notes, setNotes, showButton, setShowB
           console.log("Note successfully deleted from the database");
           console.log(_id);
           setNotes(notes.filter(note => note._id !== _id));
-          // setShowButton([JSON.stringify(_id), ...showButton]);
+          console.log(notes);
         } else {
           console.log("error, couldn't delete the note from the database");
         }
