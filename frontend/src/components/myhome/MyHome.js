@@ -51,7 +51,7 @@ const MyHome = ({ navigate }) => {
   }, [counter, token])
 
   const handleNewFile = () => {
-    // navigate("/newfile")
+    navigate("/newfile")
   }
 
   const handleFileClick = async (event) => {
@@ -68,17 +68,13 @@ const MyHome = ({ navigate }) => {
       welcome to your home page
       </h1>
     </div>
-      
+    <div className="new-file">
+      <button className="new-file-button" onClick={handleNewFile}>create new file</button>
+    </div>     
     </div>  
     <div>
     {
       !selected ? (
-        <div className="new-file">
-          <button className="new-file-button" onClick={handleNewFile}>create new file</button>
-        </div>,
-        <h3 className="prompt">
-        Please select a file
-        </h3>,
         files.map((f) => {
           if (f.userId === window.localStorage.getItem("userId")) {
           return (
