@@ -14,12 +14,16 @@ html {
   height: 30px;
   width: 200px;
   font-size: 18px;
-  background-color: rgb(110, 110, 118);
+  background-color: rgb(133, 133, 178);
   border-radius: 15px;
 }
 
+.new-file {
+  padding-bottom: 10px;
+}
+
 .new-file-button:hover {
-  background-color: aquamarine;
+  background-color: rgb(63, 169, 40);
   cursor: pointer;
 }
 
