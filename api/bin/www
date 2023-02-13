@@ -3,10 +3,10 @@ var debug = require("debug")("filing:server");
 var http = require("http");
 var mongoose = require("mongoose");
 
-var port = normalizePort(process.env.PORT || "8080");
+var port = normalizePort("8080");
 app.set("port", port);
 
-var mongoDbUrl = process.env.MONGODB_URL || "mongodb://localhost:27017/filing";
+var mongoDbUrl = "mongodb://localhost:27017/filing";
 mongoose.connect(mongoDbUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -50,11 +50,11 @@ function onError(error) {
   switch (error.code) {
     case "EACCES":
       console.error(bind + " requires elevated privileges");
-      process.exit(1);
+      // process.exit(1);
       break;
     case "EADDRINUSE":
       console.error(bind + " is already in use");
-      process.exit(1);
+      // process.exit(1);
       break;
     default:
       throw error;
