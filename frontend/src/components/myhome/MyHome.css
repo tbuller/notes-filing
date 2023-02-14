@@ -146,3 +146,11 @@ html {
   background-color: red;
   color: white;
 }
+
+.submit-container {
+  padding-top: 10px;
+}
+
+label {
+  font-family: "georgia";
+}

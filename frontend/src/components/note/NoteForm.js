@@ -54,7 +54,9 @@ const NoteForm = ({ navigate, filteredFile, setNotes, notes, counter, setCounter
     </div>
     <textarea className="note-content" onChange={handleContent}/>
     </div>
+    <div className="submit-container">
     <input type="submit" className="submit-form" />
+    </div>
     </form>
     </div>
     
